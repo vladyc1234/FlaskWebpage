@@ -29,15 +29,15 @@ the new data.
 
 - Windows 10 Pro (Version 22H2)
 
-## Compiler
+### Compiler
 
 - Python 3.11
 
-## IDE used
+### IDE used
 
 - Pycharm Community edition
 
-## Packages:
+### Packages:
 
 - blinker==1.7.0
 - certifi==2024.2.2
@@ -57,11 +57,11 @@ the new data.
 - urllib3==2.2.1
 - Werkzeug==3.0.1
 
-## How to use:
+### How to use:
 
 Simply introduce the desired city name in the displayed form and press the submit button, the page will display meteorological data for the next 3 days for the specified city
 
-## Here's how the script works:
+### Here's how the script works:
 
 - Setup Logger: If the application is not in debug mode, it sets up a rotating file handler for logging. It logs messages of level INFO or higher to a file named yourapp.log in the logs directory.
 
@@ -143,5 +143,47 @@ INSERT INTO Votes (ID, Voting_date, chosen_person, voter, message, valid, qualit
 VALUES (256, '2022-10-29 11:58:23', '03400565', 1, 'Vote 4', 1, 'developer');
 INSERT INTO Votes (ID, Voting_date, chosen_person, voter, message, valid, quality)
 VALUES (257, '2022-10-29 12:13:00', '03400436', 1, 'Vote 5', 1, 'developer');
+</pre>
+
+### Implementation
+
+#### Create a report with the votes/qualities received for each person in each location.
+<pre>
+SELECT
+    p.Locatie,
+    p.First_Name,
+    p.Last_Name,
+    v.quality,
+    COUNT(v.ID) AS VotesReceived
+FROM
+    persons p
+JOIN
+    Votes v ON p.ID = v.chosen_person
+WHERE
+    v.valid = 1
+GROUP BY
+    p.Locatie,
+    p.First_Name,
+    p.Last_Name,
+    v.quality
+ORDER BY
+    p.Locatie,
+    p.First_Name,
+    p.Last_Name;
+</pre>
+
+#### Create a report with the votes on each country. For countries without votes, return 0.
+<pre>
+SELECT
+    p.Locatie AS Country,
+    SUM(CASE WHEN v.valid = 1 THEN 1 ELSE 0 END) AS ValidVotes
+FROM
+    persons p
+JOIN
+    Votes v ON p.ID = v.chosen_person
+GROUP BY
+    p.Locatie
+ORDER BY
+    p.Locatie;  
 </pre>
 
