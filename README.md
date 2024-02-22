@@ -82,6 +82,7 @@ Simply introduce the desired city name in the displayed form and press the submi
 Using SQL queries and the following tables: Persons and Votes, generate these reports:
 1. Create a report with the votes/qualities received for each person in each location.
 2. Create a report with the votes on each country. For countries without votes, return 0.
+
 The SQL queries for creating and inserting data in tables can be found below:
 
 1. Persons
