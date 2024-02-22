@@ -1,7 +1,8 @@
 # Flask Webpage
 
-### Task 1:
-1. Webpage Creation:
+## Task 1:
+
+### 1. Webpage Creation:
 • Create a simple webpage with a textbox for entering a city name and a submit button.
 • Upon submitting the city name, fetch the weather forecast for the next 3 days from the
 www.weatherapi.com service using their API.
