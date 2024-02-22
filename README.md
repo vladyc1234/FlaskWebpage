@@ -67,12 +67,13 @@ Simply introduce the desired city name in the displayed form and press the submi
 
 - Configuration: It configures the Flask application and initializes the database with SQLAlchemy.
 
+- Database Handling: It creates the necessary tables in the database if they don't exist already, using db.create_all(). It interacts with the database using SQLAlchemy ORM to check for existing entries and update them or add new entries.
+
 - Main Logic: Defines a route / for handling both GET and POST requests.
 
-  -GET Request: When the user visits the homepage, it renders the index.html template with an empty forecast and city name.
+  - GET Request: When the user visits the homepage, it renders the index.html template with an empty forecast and city name.
 
-  -POST Request: When the user submits a form (presumably with a city name), it tries to fetch weather forecast data for that city from the WeatherAPI. If successful, it updates the database with the retrieved data or adds a new entry if it doesn't exist already. It then commits the changes to the database. If there's an error during any of these processes, it logs the error and renders an error message in the template.
+  - POST Request: When the user submits a form (presumably with a city name), it tries to fetch weather forecast data for that city from the WeatherAPI. If successful, it updates the database with the retrieved data or adds a new entry if it doesn't exist already. It then commits the changes to the database. If there's an error during any of these processes, it logs the error and renders an error message in the template.
 
--Database Handling: It creates the necessary tables in the database if they don't exist already, using db.create_all(). It interacts with the database using SQLAlchemy ORM to check for existing entries and update them or add new entries.
 
--Run Application: Finally, it runs the Flask application if the script is executed directly.
+
