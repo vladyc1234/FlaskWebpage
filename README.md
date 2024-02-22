@@ -85,6 +85,7 @@ Using SQL queries and the following tables: Persons and Votes, generate these re
 
 The SQL queries for creating and inserting data in tables can be found below:
 
+<pre>
 1. Persons
    
 CREATE TABLE persons (
@@ -142,5 +143,5 @@ INSERT INTO Votes (ID, Voting_date, chosen_person, voter, message, valid, qualit
 VALUES (256, '2022-10-29 11:58:23', '03400565', 1, 'Vote 4', 1, 'developer');
 INSERT INTO Votes (ID, Voting_date, chosen_person, voter, message, valid, quality)
 VALUES (257, '2022-10-29 12:13:00', '03400436', 1, 'Vote 5', 1, 'developer');
-
+</pre>
 
