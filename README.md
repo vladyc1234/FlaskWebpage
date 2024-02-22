@@ -25,6 +25,16 @@ the new data.
 
 ## Implementation
 
+### How to use:
+
+1. Download python project.
+
+2. Install Pycharm Community edition.
+
+3. Run project in Pycharm.
+
+4. Simply introduce the desired city name in the displayed form and press the submit button, the page will display meteorological data for the next 3 days for the specified city.
+
 ### Operating System
 
 - Windows 10 Pro (Version 22H2)
@@ -56,10 +66,6 @@ the new data.
 - typing_extensions==4.9.0
 - urllib3==2.2.1
 - Werkzeug==3.0.1
-
-### How to use:
-
-Simply introduce the desired city name in the displayed form and press the submit button, the page will display meteorological data for the next 3 days for the specified city
 
 ### Here's how the script works:
 
