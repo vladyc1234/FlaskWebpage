@@ -33,13 +33,18 @@ the new data.
 
 3. Run project(webpage.py) in Pycharm.
 
-4. Expected console output <pre>WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+- Expected console output
+<pre>
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on http://127.0.0.1:5000
 Press CTRL+C to quit
  * Restarting with stat
 [2024-02-22 21:49:51,113] INFO in webpage: YourApp startup
  * Debugger is active!
- * Debugger PIN: 107-215-880</pre>
+ * Debugger PIN: 107-215-880
+ * </pre>
+
+4. Press on the link provided in the console output.
 
 5. Simply introduce the desired city name in the displayed form and press the submit button, the page will display meteorological data for the next 3 days for the specified city.
 
