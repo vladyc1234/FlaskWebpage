@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City Name Form</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        window.onload = function() {
+            {% if popup %}
+                alert("City does not exist, please try again!");
+            {% endif %}
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter a City Name</h1>
+        <form method="post">
+            <input type="text" name="city" placeholder="Enter City Name" required>
+            <button type="submit">Submit</button>
+        </form>
+        {% if forecast %}
+            <div class="forecast">
+                <h2>Weather Forecast for {{city_name}}</h2>
+                {% for day in forecast %}
+                    <div class="forecast-entry">
+                        <h3>{{ day.date }}</h3>
+                        <p>Max Temp: {{ day.day.maxtemp_c }}°C</p>
+                        <p>Min Temp: {{ day.day.mintemp_c }}°C</p>
+                        <p>Total Precipitation: {{ day.day.totalprecip_mm }}</p>
+                        <p>Sunrise Hour: {{ day.astro.sunrise }}</p>
+                        <p>Sunset Hour: {{ day.astro.sunset }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
