@@ -43,22 +43,22 @@ The IT_PROJECTS table have the following attributes:
 
 ### How does the script work
 
-1. app.js (Main Application File)
+#### 1. app.js (Main Application File)
 This file is likely the entry point of your application. It initializes the Express.js server, sets up middleware for request parsing, and registers routes handled by your ProjectController. It also listens on a specified port for incoming HTTP requests.
 
-2. database.js (Database Configuration)
+#### 2. database.js (Database Configuration)
 This script configures and initializes the connection to your SQLite database. It ensures that your application can interact with the database to perform CRUD operations.
 
-3. ProjectService.js (Service Layer)
+#### 3. ProjectService.js (Service Layer)
 The service layer contains the business logic of your application. It interacts directly with the database to create, read, update, and delete project data. Functions within this file utilize SQL queries to manipulate the IT_PROJECTS table according to the application's needs.
 
-4. CreateProjectDTO.js and UpdateProjectDTO.js (Data Transfer Objects)
+#### 4. CreateProjectDTO.js and UpdateProjectDTO.js (Data Transfer Objects)
 These files define the Data Transfer Objects (DTOs) for creating and updating projects. DTOs are used to encapsulate the data sent between the client and the server, ensuring that only valid and structured data is processed by the service layer.
 
-5. ProjectController.js (Controller)
+#### 5. ProjectController.js (Controller)
 The controller handles incoming HTTP requests, validates request data, and calls the appropriate service layer functions. It then responds to the client based on the outcome of the service layer operations. This file maps your application's endpoints to the functionality in the service layer.
 
-6. projectSerivice.test.js (Test File)
+#### 6. projectSerivice.test.js (Test File)
 This file contains tests for the ProjectService using Jest. It tests the functionality of your service layer to ensure it behaves as expected when interacting with the database. The tests mock database interactions to isolate the service logic.
 
 ## Task Algorithm challenges
@@ -78,12 +78,7 @@ substrings can be found.
 
 ![image](https://github.com/vladyc1234/FlaskWebpage/assets/73032808/5bd08c52-f270-483b-ac95-db62d9dde026)
 
-Explanation
-- We can generate the following contiguous substrings of length 3
-  o String &quot;aab&quot; has 2 distinct chars and we can keep it
-  o String &quot;abb&quot; has 2 distinct chars and we can keep it
-  o String &quot;bbc&quot; has 2 distinct chars and we can keep it
-  o String &quot;bcd&quot; has 3 distinct chars and we don&#39;t keep it
-- We also notice that all the substrings are unique, so we can return them all
+![image](https://github.com/vladyc1234/FlaskWebpage/assets/73032808/58c7c29c-927f-40ee-bf33-493f51e1bc6f)
+
 
 
