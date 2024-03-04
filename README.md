@@ -22,180 +22,68 @@ The IT_PROJECTS table have the following attributes:
 
 1. Download Visual Studio Code.
 
-2. Download NodeJs [link!]https://nodejs.org/en.
+2. Run project(app.js) in VS Code terminal.
 
-3. Run project(webpage.py) in Pycharm.
-
-- Expected console output
-<pre>
-WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
- * Running on http://127.0.0.1:5000
-Press CTRL+C to quit
- * Restarting with stat
-[2024-02-22 21:49:51,113] INFO in webpage: YourApp startup
- * Debugger is active!
- * Debugger PIN: 107-215-880
- * </pre>
-
-4. Press on the link provided in the console output.
-
-5. Simply introduce the desired city name in the displayed form and press the submit button, the page will display meteorological data for the next 3 days for the specified city.
+3. Download and use Postman to visualize the functionalities.
 
 ### Operating System
 
 - Windows 10 Pro (Version 22H2)
 
-### Compiler
-
-- Python 3.11
-
 ### IDE used
 
-- Pycharm Community edition
+- Visual Studio Code
 
 ### Packages:
 
-- blinker==1.7.0
-- certifi==2024.2.2
-- charset-normalizer==3.3.2
-- click==8.1.7
-- colorama==0.4.6
-- Flask==3.0.2
-- Flask-SQLAlchemy==3.1.1
-- greenlet==3.0.3
-- idna==3.6
-- itsdangerous==2.1.2
-- Jinja2==3.1.3
-- MarkupSafe==2.1.5
-- requests==2.31.0
-- SQLAlchemy==2.0.27
-- typing_extensions==4.9.0
-- urllib3==2.2.1
-- Werkzeug==3.0.1
+- body-parser@1.20.2
+- express@4.18.3
+- jest@29.7.0
+- sqlite3@5.1.7
 
-### Here's how the script works:
+### How does the script work
 
-- Setup Logger: If the application is not in debug mode, it sets up a rotating file handler for logging. It logs messages of level INFO or higher to a file named yourapp.log in the logs directory.
+1. app.js (Main Application File)
+This file is likely the entry point of your application. It initializes the Express.js server, sets up middleware for request parsing, and registers routes handled by your ProjectController. It also listens on a specified port for incoming HTTP requests.
 
-- Configuration: It configures the Flask application and initializes the database with SQLAlchemy.
+2. database.js (Database Configuration)
+This script configures and initializes the connection to your SQLite database. It ensures that your application can interact with the database to perform CRUD operations.
 
-- Database Handling: It creates the necessary tables in the database if they don't exist already, using db.create_all(). It interacts with the database using SQLAlchemy ORM to check for existing entries and update them or add new entries.
+3. ProjectService.js (Service Layer)
+The service layer contains the business logic of your application. It interacts directly with the database to create, read, update, and delete project data. Functions within this file utilize SQL queries to manipulate the IT_PROJECTS table according to the application's needs.
 
-- Main Logic: Defines a route / for handling both GET and POST requests.
+4. CreateProjectDTO.js and UpdateProjectDTO.js (Data Transfer Objects)
+These files define the Data Transfer Objects (DTOs) for creating and updating projects. DTOs are used to encapsulate the data sent between the client and the server, ensuring that only valid and structured data is processed by the service layer.
 
-  - GET Request: When the user visits the homepage, it renders the index.html template with an empty forecast and city name.
+5. ProjectController.js (Controller)
+The controller handles incoming HTTP requests, validates request data, and calls the appropriate service layer functions. It then responds to the client based on the outcome of the service layer operations. This file maps your application's endpoints to the functionality in the service layer.
 
-  - POST Request: When the user submits a form (presumably with a city name), it tries to fetch weather forecast data for that city from the WeatherAPI. If successful, it updates the database with the retrieved data or adds a new entry if it doesn't exist already. It then commits the changes to the database. If there's an error during any of these processes, it logs the error and renders an error message in the template.
+6. projectSerivice.test.js (Test File)
+This file contains tests for the ProjectService using Jest. It tests the functionality of your service layer to ensure it behaves as expected when interacting with the database. The tests mock database interactions to isolate the service logic.
 
-## Task 2
+## Task Algorithm challenges
 
-### SQL query:
+### Task 1:
 
-Using SQL queries and the following tables: Persons and Votes, generate these reports:
-1. Create a report with the votes/qualities received for each person in each location.
-2. Create a report with the votes on each country. For countries without votes, return 0.
+  Implement an algorithm to determine if a string has all unique characters. What if you cannot use
+additional data structures?
 
-The SQL queries for creating and inserting data in tables can be found below:
+![image](https://github.com/vladyc1234/FlaskWebpage/assets/73032808/49be2b93-0bbb-4bf8-955d-a93a83e5cb83)
 
-<pre>
-1. Persons
-   
-CREATE TABLE persons (
-ID VARCHAR(20) PRIMARY KEY,
-Status VARCHAR(10),
-First_Name VARCHAR(50),
-Last_Name VARCHAR(50),
-Email_Address VARCHAR(100),
-Locatie VARCHAR(50)
-);
+### Task 2:
 
-3. Votes
-CREATE TABLE Votes (
-ID INT PRIMARY KEY,
-voting_date DATETIME,
-chosen_person VARCHAR(20),
-voter INT,
-message VARCHAR(100),
-valid BIT,
-quality VARCHAR(20)
-);
+  Write a function that takes as arguments a string and a number and returns all unique contiguous
+substrings of length num that have num-1 distinct chars. We should return an empty list if no
+substrings can be found.
 
-With the following insert queries:
+![image](https://github.com/vladyc1234/FlaskWebpage/assets/73032808/5bd08c52-f270-483b-ac95-db62d9dde026)
 
-Insert to persons:
+Explanation
+- We can generate the following contiguous substrings of length 3
+  o String &quot;aab&quot; has 2 distinct chars and we can keep it
+  o String &quot;abb&quot; has 2 distinct chars and we can keep it
+  o String &quot;bbc&quot; has 2 distinct chars and we can keep it
+  o String &quot;bcd&quot; has 3 distinct chars and we don&#39;t keep it
+- We also notice that all the substrings are unique, so we can return them all
 
-INSERT INTO persons (ID, Status, First_Name, Last_Name, Email_Address, Locatie)
-VALUES ('00108901', 'Active', 'Person', 'One', 'person.one@gfk.com', 'Germany');
-INSERT INTO persons (ID, Status, First_Name, Last_Name, Email_Address, Locatie)
-VALUES ('00108941', 'Active', 'Person', 'Two', 'person.two@gfk.com', 'France');
-INSERT INTO persons (ID, Status, First_Name, Last_Name, Email_Address, Locatie)
-VALUES ('00199990', 'Inactive', 'Person', 'Three', 'person.three@gfk.com', 'Brazil');
-INSERT INTO persons (ID, Status, First_Name, Last_Name, Email_Address, Locatie)
-VALUES ('01100003', 'Active', 'Person', 'Four', 'person.four@gfk.com', 'Hong Kong');
-INSERT INTO persons (ID, Status, First_Name, Last_Name, Email_Address, Locatie)
-VALUES ('03400110', 'Active', 'Person', 'Five', 'person.five@gfk.com', 'Germany');
-INSERT INTO persons (ID, Status, First_Name, Last_Name, Email_Address, Locatie)
-VALUES ('03400360', 'Active', 'Person', 'Six', 'person.six@gfk.com', 'France');
-INSERT INTO persons (ID, Status, First_Name, Last_Name, Email_Address, Locatie)
-VALUES ('03402059', 'Inactive', 'Person', 'Seven', 'person.seven@gfk.com', 'Brazil');
-INSERT INTO persons (ID, Status, First_Name, Last_Name, Email_Address, Locatie)
-VALUES ('03400565', 'Active', 'Person', 'Eight', 'person.eight@gfk.com', 'Hong Kong');
-INSERT INTO persons (ID, Status, First_Name, Last_Name, Email_Address, Locatie)
-VALUES ('03400436', 'Active', 'Person', 'Nine', 'person.nine@gfk.com', 'Hong Kong');
-
-Insert to Votes:
-
-INSERT INTO Votes (ID, Voting_date, chosen_person, voter, message, valid, quality)
-VALUES (253, '2022-10-29 11:54:15', '03400110', 1, 'Vote 1', 1, 'entrepreneur');
-INSERT INTO Votes (ID, Voting_date, chosen_person, voter, message, valid, quality)
-VALUES (254, '2022-10-29 11:55:22', '03400360', 1, 'Vote 2', 0, 'entrepreneur');
-INSERT INTO Votes (ID, Voting_date, chosen_person, voter, message, valid, quality)
-VALUES (255, '2022-10-29 11:56:53', '03402059', 1, 'Vote 3', 1, 'partner');
-INSERT INTO Votes (ID, Voting_date, chosen_person, voter, message, valid, quality)
-VALUES (256, '2022-10-29 11:58:23', '03400565', 1, 'Vote 4', 1, 'developer');
-INSERT INTO Votes (ID, Voting_date, chosen_person, voter, message, valid, quality)
-VALUES (257, '2022-10-29 12:13:00', '03400436', 1, 'Vote 5', 1, 'developer');
-</pre>
-
-### Implementation
-
-#### Create a report with the votes/qualities received for each person in each location.
-<pre>
-SELECT
-    p.Locatie,
-    p.First_Name,
-    p.Last_Name,
-    v.quality,
-    COUNT(v.ID) AS VotesReceived
-FROM
-    persons p
-JOIN
-    Votes v ON p.ID = v.chosen_person
-WHERE
-    v.valid = 1
-GROUP BY
-    p.Locatie,
-    p.First_Name,
-    p.Last_Name,
-    v.quality
-ORDER BY
-    p.Locatie,
-    p.First_Name,
-    p.Last_Name;
-</pre>
-
-#### Create a report with the votes on each country. For countries without votes, return 0.
-<pre>
-SELECT
-    p.Locatie AS Country,
-    SUM(CASE WHEN v.valid = 1 THEN 1 ELSE 0 END) AS ValidVotes
-FROM
-    persons p
-JOIN
-    Votes v ON p.ID = v.chosen_person
-GROUP BY
-    p.Locatie
-ORDER BY
-    p.Locatie;  
-</pre>
 
