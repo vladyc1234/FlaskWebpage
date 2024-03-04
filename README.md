@@ -1,35 +1,28 @@
 # Flask Webpage
 
-## Task 1:
+## Data-driven CRUD microservice
 
-### 1. Webpage Creation:
-• Create a simple webpage with a textbox for entering a city name and a submit button.
-• Upon submitting the city name, fetch the weather forecast for the next 3 days from the
-www.weatherapi.com service using their API.
-• Display the weather forecast for each day in a table format on the webpage.
-
-### 3. Data Storage with any ORM:
-• Use an ORM to create a SQLite database table to store the weather forecast data.
-• The database table should have columns for date, city, max temperature, min temperature, total
-precipitation, sunrise hour, and sunset hour and any other columns that are relevant to you.
-• If a combination of date and city already exists in the database, the existing data should be replaced with
-the new data.
-
-### Requirements:
-• Utilize Flask (or other libraries) for creating the webpage and handling form submissions.
-• Use requests library for making API requests to www.weatherapi.com.
-• Parse the API response to extract relevant weather forecast data.
-• Utilize an ORM for database interactions and model creation.
-• Implement error handling for API requests, database interactions, and webpage rendering.
-• Upload the code on GITHUB.
+Imagine that you are working for a software company and your responsibility is to build a
+simple Node.js (or, optionally, Python) data-driven CRUD microservice, that allows you to manage
+IT projects, and use as the data source, SQLite3.
+The IT_PROJECTS table have the following attributes:
+  - PROJECT_ID
+  - PROJECT_NAME
+  - START_DATE
+  - TARGET_END_DATE
+  - ACTUAL_END_DATE
+  - CREATED_ON
+  - CREATED_BY
+  - MODIFIED_ON
+  - MODIFIED_BY
 
 ## Implementation
 
 ### How to use:
 
-1. Download python project.
+1. Download Visual Studio Code.
 
-2. Install Pycharm Community edition.
+2. Download NodeJs [link!]https://nodejs.org/en.
 
 3. Run project(webpage.py) in Pycharm.
 
